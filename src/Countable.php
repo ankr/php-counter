@@ -20,13 +20,11 @@ class Countable implements CountableInterface
      * Increment the internal counter
      *
      * @param integer $amount
-     * @return $this
+     * @return void
      */
     public function increment($amount = 1)
     {
         $this->counter += $amount;
-
-        return $this;
     }
 
     /**
@@ -41,13 +39,11 @@ class Countable implements CountableInterface
      * Decrement internal counter
      *
      * @param integer $amount
-     * @return $this
+     * @return void
      */
     public function decrement($amount = 1)
     {
         $this->counter -= $amount;
-
-        return $this;
     }
 
     /**
@@ -62,13 +58,11 @@ class Countable implements CountableInterface
      * Set internal counter to specific value
      *
      * @param integer $value
-     * @return $this
+     * @return void
      */
     public function set($value)
     {
         $this->counter = $value;
-
-        return $this;
     }
 
     /**
@@ -84,13 +78,22 @@ class Countable implements CountableInterface
     /**
      * Resets internal counter
      *
-     * @return $this
+     * @return void
      */
     public function reset()
     {
         $this->counter = 0;
+    }
 
-        return $this;
+    /**
+     * Set name for counter
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
 }

@@ -93,18 +93,23 @@ class Counter
     }
 
     /**
-     * Reset one or all counters
+     * Reset one counter
      *
-     * @param string|null $name
+     * @param string $name
      * @return void
      */
-    public static function reset($name = null)
+    public static function reset($name)
     {
-        if ($name !== null) {
-            self::$counters[$name]->reset();
-            return;
-        }
+        self::$counters[$name]->reset();
+    }
 
+    /**
+     * Reset all counters
+     *
+     * @return void
+     */
+    public static function resetAll()
+    {
         foreach (self::$counters as $counter) {
             $counter->reset();
         }
@@ -122,4 +127,5 @@ class Counter
             self::$counters[$name] = new Countable;
         }
     }
+
 }

@@ -12,7 +12,7 @@ class CounterTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Counter::reset();
+        Counter::removeAll();
     }
 
     public function testGetException()
