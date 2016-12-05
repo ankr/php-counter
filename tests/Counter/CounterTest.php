@@ -41,7 +41,7 @@ class CounterTest extends TestCase
         Counter::set('foo', 3);
         $this->assertEquals(3, Counter::get('foo'));
 
-        Counter::inc('foo');
+        Counter::increment('foo');
         $this->assertEquals(4, Counter::get('foo'));
 
         Counter::set('foo', 3);
@@ -55,16 +55,16 @@ class CounterTest extends TestCase
      */
     public function testIncrement()
     {
-        Counter::inc('foo');
+        Counter::increment('foo');
         $this->assertEquals(Counter::get('foo'), 1);
 
-        Counter::inc('foo', 2);
-        Counter::inc('bar');
+        Counter::increment('foo', 2);
+        Counter::increment('bar');
         $this->assertEquals(Counter::get('foo'), 3);
         $this->assertEquals(Counter::get('bar'), 1);
 
-        Counter::inc('foo', -1);
-        Counter::inc('bar', 2);
+        Counter::increment('foo', -1);
+        Counter::increment('bar', 2);
         $this->assertEquals(Counter::get('foo'), 2);
         $this->assertEquals(Counter::get('bar'), 3);
     }
@@ -76,18 +76,18 @@ class CounterTest extends TestCase
      */
     public function testDecrement()
     {
-        Counter::inc('foo');
-        $this->assertEquals(Counter::get('foo'), 1);
+        Counter::decrement('foo');
+        $this->assertEquals(Counter::get('foo'), -1);
 
-        Counter::inc('foo', 2);
-        Counter::inc('bar');
-        $this->assertEquals(Counter::get('foo'), 3);
-        $this->assertEquals(Counter::get('bar'), 1);
+        Counter::decrement('foo', 2);
+        Counter::decrement('bar');
+        $this->assertEquals(Counter::get('foo'), -3);
+        $this->assertEquals(Counter::get('bar'), -1);
 
-        Counter::inc('foo', -1);
-        Counter::inc('bar', 2);
-        $this->assertEquals(Counter::get('foo'), 2);
-        $this->assertEquals(Counter::get('bar'), 3);
+        Counter::decrement('foo', -1);
+        Counter::decrement('bar', 2);
+        $this->assertEquals(Counter::get('foo'), -2);
+        $this->assertEquals(Counter::get('bar'), -3);
     }
 
 }
