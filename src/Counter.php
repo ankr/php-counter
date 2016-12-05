@@ -49,7 +49,7 @@ class Counter
      *
      * @param string $name
      * @return integer
-     * @throws \ankr\Counter\Countable\Error\CounterException
+     * @throws \ankr\Counter\Error\CounterException
      */
     public static function count($name)
     {
@@ -77,7 +77,7 @@ class Counter
      *
      * @param string $name
      * @return \ankr\Counter\Countable
-     * @throws \ankr\Counter\Countable\Error\CounterException
+     * @throws \ankr\Counter\Error\CounterException
      */
     public static function get($name)
     {
@@ -102,7 +102,7 @@ class Counter
      * Set value for a counter
      *
      * @param string $name
-     * @param integer
+     * @param integer $value
      * @return void
      */
     public static function set($name, $value)
@@ -116,6 +116,7 @@ class Counter
      *
      * @param string $name
      * @return void
+     * @throws \ankr\Counter\Error\CounterException
      */
     public static function reset($name)
     {
@@ -141,7 +142,7 @@ class Counter
     /**
      * Remove one counter
      *
-     * @param string $nam
+     * @param string $name
      * @return void
      */
     public static function remove($name)
@@ -160,7 +161,7 @@ class Counter
     }
 
     /**
-     * Ensure a counter is present before we try to inc/dec it
+     * Ensure a counter is present before we try to use it
      *
      * @param string $name
      * @return void
