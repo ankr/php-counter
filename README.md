@@ -43,7 +43,7 @@ Counter::count('foo'); // 0
 
 ```
 
-# Extras
+## Extras
 ```php
 <?php
 
