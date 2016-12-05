@@ -160,7 +160,7 @@ class Counter
     }
 
     /**
-     * Ensure a counter is presnet before we try to inc/dec it
+     * Ensure a counter is present before we try to inc/dec it
      *
      * @param string $name
      * @return void
