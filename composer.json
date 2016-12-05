@@ -1,11 +1,21 @@
 {
-  "require": {
-    "phpunit/phpunit": "^5.7"
-  },
-  "autoload": {
-    "psr-4": {
-      "ankr\\Counter\\": "src/",
-      "ankr\\Tests\\": "tests/"
+    "name": "ankr/php-counter",
+    "description": "Tool for keeping track of counters during runtime.",
+    "type": "library",
+    "license": "WTFPL",
+    "authors": [
+        {
+            "name": "ankr",
+            "email": "mail@ankr.dk"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "ankr\\Counter\\": "src/",
+            "ankr\\Tests\\": "tests/"
+        }
     }
-  }
 }
