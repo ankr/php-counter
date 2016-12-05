@@ -1,6 +1,6 @@
 # PHP class for counting values
 
-This repository contains code that will help developers count various values during execution.
+This repository contains code that will help developers keeping track of counters during execution.
 
 Contains:
  - `Counter.php` A static class for handling multiple counters
