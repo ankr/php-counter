@@ -31,14 +31,6 @@ class Counter
     }
 
     /**
-     * Alias for `increment`
-     */
-    public static function inc()
-    {
-        return call_user_func_array([get_class(), 'increment'], func_get_args());
-    }
-
-    /**
      * Decrement a counter
      *
      * @param string $name
@@ -52,31 +44,45 @@ class Counter
     }
 
     /**
-     * Alias for `decrement`
-     */
-    public static function dec()
-    {
-        return call_user_func_array([get_class(), 'decrement'], func_get_args());
-    }
-
-    /**
-     * Get one or all counters
+     * Get counted value by name
      *
-     * @param string|null $name
-     * @return integer|array<\ankr\Counter\Countable>
-     * @throws \Exception
+     * @param string $name
+     * @return integer
+     * @throws \ankr\Counter\Countable\Error\CounterException
      */
-    public static function get($name = null)
+    public static function count($name)
     {
-        if ($name === null) {
-            return self::$counters;
-        }
-
         if (!array_key_exists($name, self::$counters)) {
             throw new CounterException('Counter "' . $name . '" not found!');
         }
 
         return self::$counters[$name]->count();
+    }
+
+    /**
+     * Get Countable by name
+     *
+     * @param string $name
+     * @return \ankr\Counter\Countable
+     * @throws \ankr\Counter\Countable\Error\CounterException
+     */
+    public static function get($name)
+    {
+        if (!array_key_exists($name, self::$counters)) {
+            throw new CounterException('Counter "' . $name . '" not found!');
+        }
+
+        return self::$counters[$name];
+    }
+
+    /**
+     * Get all counters
+     *
+     * @return array<\ankr\Counter\Countable>
+     */
+    public static function getAll()
+    {
+        return self::$counters;
     }
 
     /**
@@ -145,7 +151,10 @@ class Counter
     protected static function ensure($name)
     {
         if (!array_key_exists($name, self::$counters)) {
-            self::$counters[$name] = new Countable;
+            $counter = new Countable;
+            $counter->setName($name);
+
+            self::$counters[$name] = $counter;
         }
     }
 

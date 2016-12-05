@@ -24,6 +24,19 @@ class Countable implements CountableInterface
     protected $name = null;
 
     /**
+     * Constructor
+     *
+     * @param integer $value
+     * @param string|null $name
+     * @return void
+     */
+    public function __construct($value = 0, $name = null)
+    {
+        $this->counter = $value;
+        $this->name = $name;
+    }
+
+    /**
      * Increment the internal counter
      *
      * @param integer $amount
@@ -35,14 +48,6 @@ class Countable implements CountableInterface
     }
 
     /**
-     * Alias for `increment`
-     */
-    public function inc()
-    {
-        return call_user_func_array([$this, 'increment'], func_get_args());
-    }
-
-    /**
      * Decrement internal counter
      *
      * @param integer $amount
@@ -51,14 +56,6 @@ class Countable implements CountableInterface
     public function decrement($amount = 1)
     {
         $this->counter -= $amount;
-    }
-
-    /**
-     * Alias for `decrement`
-     */
-    public function dec()
-    {
-        return call_user_func_array([$this, 'decrement'], func_get_args());
     }
 
     /**
