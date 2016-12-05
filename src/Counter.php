@@ -116,6 +116,27 @@ class Counter
     }
 
     /**
+     * Remove one counter
+     *
+     * @param string $nam
+     * @return void
+     */
+    public static function remove($name)
+    {
+        unset(self::$counters[$name]);
+    }
+
+    /**
+     * Remove all counters
+     *
+     * @return void
+     */
+    public static function removeAll()
+    {
+        self::$counters = [];
+    }
+
+    /**
      * Ensure a counter is presnet before we try to inc/dec it
      *
      * @param string $name
