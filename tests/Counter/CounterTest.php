@@ -2,8 +2,8 @@
 
 namespace ankr\Tests\Counter;
 
-use ankr\Counter\Counter;
 use ankr\Counter\Countable;
+use ankr\Counter\Counter;
 use ankr\Counter\Error\CounterException;
 use PHPUnit_Framework_TestCase as TestCase;
 
