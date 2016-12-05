@@ -10,6 +10,7 @@ use ankr\Counter\Error\CounterException;
  */
 class Counter
 {
+
     /**
      * All counters
      *
@@ -60,6 +61,18 @@ class Counter
     }
 
     /**
+     * Return values of all counters
+     *
+     * @return array<integer>
+     */
+    public static function countAll()
+    {
+        return array_map(function ($counter) {
+            return $counter->count();
+        }, self::$counters);
+    }
+
+    /**
      * Get Countable by name
      *
      * @param string $name
@@ -106,6 +119,10 @@ class Counter
      */
     public static function reset($name)
     {
+        if (!array_key_exists($name, self::$counters)) {
+            throw new CounterException('Counter "' . $name . '" not found!');
+        }
+
         self::$counters[$name]->reset();
     }
 

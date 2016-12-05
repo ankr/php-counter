@@ -9,6 +9,7 @@ use Countable as CountableInterface;
  */
 class Countable implements CountableInterface
 {
+
     /**
      * The internal counter
      *
