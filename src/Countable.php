@@ -17,6 +17,13 @@ class Countable implements CountableInterface
     protected $counter = 0;
 
     /**
+     * Name of counter
+     *
+     * @var string|null
+     */
+    protected $name = null;
+
+    /**
      * Increment the internal counter
      *
      * @param integer $amount
@@ -94,6 +101,16 @@ class Countable implements CountableInterface
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * Get name for counter, if set
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
 }
