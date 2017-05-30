@@ -31,9 +31,8 @@ class Countable implements CountableInterface
      *
      * @param integer $value
      * @param string|null $name
-     * @return void
      */
-    public function __construct($value = 0, $name = null)
+    public function __construct(int $value = 0, string $name = null)
     {
         $this->counter = $value;
         $this->name = $name;
@@ -45,7 +44,7 @@ class Countable implements CountableInterface
      * @param integer $amount
      * @return void
      */
-    public function increment($amount = 1)
+    public function increment(int $amount = 1): void
     {
         $this->counter += $amount;
     }
@@ -56,7 +55,7 @@ class Countable implements CountableInterface
      * @param integer $amount
      * @return void
      */
-    public function decrement($amount = 1)
+    public function decrement(int $amount = 1): void
     {
         $this->counter -= $amount;
     }
@@ -67,7 +66,7 @@ class Countable implements CountableInterface
      * @param integer $value
      * @return void
      */
-    public function set($value)
+    public function set(int $value): void
     {
         $this->counter = $value;
     }
@@ -77,7 +76,7 @@ class Countable implements CountableInterface
      *
      * @return integer
      */
-    public function count()
+    public function count(): int
     {
         return $this->counter;
     }
@@ -87,7 +86,7 @@ class Countable implements CountableInterface
      *
      * @return void
      */
-    public function reset()
+    public function reset(): void
     {
         $this->counter = 0;
     }
@@ -98,7 +97,7 @@ class Countable implements CountableInterface
      * @param string $name
      * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -108,7 +107,7 @@ class Countable implements CountableInterface
      *
      * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
