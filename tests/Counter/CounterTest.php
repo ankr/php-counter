@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ankr\Tests\Counter;
 
 use ankr\Counter\Countable;
@@ -18,7 +20,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         Counter::removeAll();
@@ -29,7 +31,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testGetException()
+    public function testGetException(): void
     {
         $this->setExpectedException(CounterException::class, 'Counter "foo" not found!');
         Counter::get('foo');
@@ -40,7 +42,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testCountException()
+    public function testCountException(): void
     {
         $this->setExpectedException(CounterException::class, 'Counter "foo" not found!');
         Counter::count('foo');
@@ -51,7 +53,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testResetException()
+    public function testResetException(): void
     {
         $this->setExpectedException(CounterException::class, 'Counter "foo" not found!');
         Counter::reset('foo');
@@ -62,7 +64,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testSetGet()
+    public function testSetGet(): void
     {
         Counter::set('foo', 2);
         $this->assertInstanceOf(Countable::class, Counter::get('foo'));
@@ -73,7 +75,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testSetCount()
+    public function testSetCount(): void
     {
         Counter::set('foo', 3);
         $this->assertEquals(3, Counter::count('foo'));
@@ -87,7 +89,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testGetAll()
+    public function testGetAll(): void
     {
         Counter::set('foo', 2);
         Counter::increment('bar');
@@ -108,7 +110,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testCountAll()
+    public function testCountAll(): void
     {
         Counter::set('foo', 2);
         Counter::increment('bar');
@@ -122,7 +124,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testIncrement()
+    public function testIncrement(): void
     {
         Counter::increment('foo');
         $this->assertEquals(Counter::count('foo'), 1);
@@ -143,7 +145,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testDecrement()
+    public function testDecrement(): void
     {
         Counter::decrement('foo');
         $this->assertEquals(Counter::count('foo'), -1);
@@ -164,7 +166,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testReset()
+    public function testReset(): void
     {
         Counter::set('foo', 2);
         $this->assertEquals(2, Counter::count('foo'));
@@ -178,7 +180,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testResetAll()
+    public function testResetAll(): void
     {
         Counter::set('foo', 1);
         Counter::set('bar', 2);
@@ -193,7 +195,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testRemove()
+    public function testRemove(): void
     {
         Counter::set('foo', 1);
         Counter::set('bar', 2);
@@ -207,7 +209,7 @@ class CounterTest extends TestCase
      *
      * @return void
      */
-    public function testRemoveAll()
+    public function testRemoveAll(): void
     {
         Counter::set('foo', 1);
         Counter::set('bar', 2);
