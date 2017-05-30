@@ -14,7 +14,7 @@ class Counter
     /**
      * All counters
      *
-     * @var array<\ankr\Counter\Countable>
+     * @var \ankr\Counter\Countable[]
      */
     protected static $counters = [];
 
@@ -63,7 +63,7 @@ class Counter
     /**
      * Return values of all counters
      *
-     * @return array<integer>
+     * @return integer[]
      */
     public static function countAll()
     {
@@ -91,7 +91,7 @@ class Counter
     /**
      * Get all counters
      *
-     * @return array<\ankr\Counter\Countable>
+     * @return \ankr\Counter\Countable[]
      */
     public static function getAll()
     {
