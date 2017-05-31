@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ankr\Counter;
 
 use ankr\Counter\Countable;
@@ -14,7 +16,7 @@ class Counter
     /**
      * All counters
      *
-     * @var array<\ankr\Counter\Countable>
+     * @var \ankr\Counter\Countable[]
      */
     protected static $counters = [];
 
@@ -25,7 +27,7 @@ class Counter
      * @param integer $amount
      * @return void
      */
-    public static function increment($name, $amount = 1)
+    public static function increment(string $name, int $amount = 1): void
     {
         self::ensure($name);
         self::$counters[$name]->increment($amount);
@@ -38,7 +40,7 @@ class Counter
      * @param integer $amount
      * @return void
      */
-    public static function decrement($name, $amount = 1)
+    public static function decrement(string $name, int $amount = 1): void
     {
         self::ensure($name);
         self::$counters[$name]->decrement($amount);
@@ -51,7 +53,7 @@ class Counter
      * @return integer
      * @throws \ankr\Counter\Error\CounterException
      */
-    public static function count($name)
+    public static function count(string $name): int
     {
         if (!array_key_exists($name, self::$counters)) {
             throw new CounterException('Counter "' . $name . '" not found!');
@@ -63,9 +65,9 @@ class Counter
     /**
      * Return values of all counters
      *
-     * @return array<integer>
+     * @return integer[]
      */
-    public static function countAll()
+    public static function countAll(): array
     {
         return array_map(function ($counter) {
             return $counter->count();
@@ -79,7 +81,7 @@ class Counter
      * @return \ankr\Counter\Countable
      * @throws \ankr\Counter\Error\CounterException
      */
-    public static function get($name)
+    public static function get(string $name): \ankr\Counter\Countable
     {
         if (!array_key_exists($name, self::$counters)) {
             throw new CounterException('Counter "' . $name . '" not found!');
@@ -91,9 +93,9 @@ class Counter
     /**
      * Get all counters
      *
-     * @return array<\ankr\Counter\Countable>
+     * @return \ankr\Counter\Countable[]
      */
-    public static function getAll()
+    public static function getAll(): array
     {
         return self::$counters;
     }
@@ -105,7 +107,7 @@ class Counter
      * @param integer $value
      * @return void
      */
-    public static function set($name, $value)
+    public static function set(string $name, int $value): void
     {
         self::ensure($name);
         self::$counters[$name]->set($value);
@@ -118,7 +120,7 @@ class Counter
      * @return void
      * @throws \ankr\Counter\Error\CounterException
      */
-    public static function reset($name)
+    public static function reset(string $name): void
     {
         if (!array_key_exists($name, self::$counters)) {
             throw new CounterException('Counter "' . $name . '" not found!');
@@ -132,7 +134,7 @@ class Counter
      *
      * @return void
      */
-    public static function resetAll()
+    public static function resetAll(): void
     {
         foreach (self::$counters as $counter) {
             $counter->reset();
@@ -145,7 +147,7 @@ class Counter
      * @param string $name
      * @return void
      */
-    public static function remove($name)
+    public static function remove(string $name): void
     {
         unset(self::$counters[$name]);
     }
@@ -155,7 +157,7 @@ class Counter
      *
      * @return void
      */
-    public static function removeAll()
+    public static function removeAll(): void
     {
         self::$counters = [];
     }
@@ -166,7 +168,7 @@ class Counter
      * @param string $name
      * @return void
      */
-    protected static function ensure($name)
+    protected static function ensure(string $name): void
     {
         if (!array_key_exists($name, self::$counters)) {
             $counter = new Countable;

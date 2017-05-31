@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ankr\Tests\Counter;
 
 use ankr\Counter\Countable;
@@ -17,7 +19,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $counter = new Countable;
         $this->assertEquals(0, $counter->count());
@@ -33,7 +35,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testSet()
+    public function testSet(): void
     {
         $counter = new Countable;
         $this->assertEquals(0, $counter->count());
@@ -47,7 +49,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testName()
+    public function testName(): void
     {
         $counter = new Countable;
         $this->assertEquals(null, $counter->getName());
@@ -61,7 +63,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testIncrement()
+    public function testIncrement(): void
     {
         $counter = new Countable(3);
 
@@ -77,7 +79,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testDecrement()
+    public function testDecrement(): void
     {
         $counter = new Countable(3);
 
@@ -93,7 +95,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testReset()
+    public function testReset(): void
     {
         $counter = new Countable(2);
         $this->assertEquals(2, $counter->count());
@@ -107,7 +109,7 @@ class CountableTest extends TestCase
      *
      * @return void
      */
-    public function testIsCountable()
+    public function testIsCountable(): void
     {
         $counter = new Countable(2);
 

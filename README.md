@@ -77,7 +77,7 @@ Counter::set('foo', 1);
 Counter::get('foo'); // \ankr\Counter\Countable
 
 // getAll
-Counter::getAll(); // array<\ankr\Counter\Countable>
+Counter::getAll(); // \ankr\Counter\Countable[]
 
 ```
 
